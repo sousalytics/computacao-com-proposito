@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Projetos dos estudantes</h2>
+<p class="hint">Este índice é gerado a partir das pastas em <code>projects/</code>. Envie PR com seu projeto.</p>
+
+<div class="cards">
+  {% for p in projects %}
+  <article class="card">
+    <h3><a href="projects/{{ p.slug }}/">{{ p.title }}</a></h3>
+    <p class="muted">Grupo: {{ p.id }} • Tema: {{ p.topic }} • Data: {{ p.date or "s/ data" }}</p>
+    <p class="tags">
+      {% if p.ods %}<span class="tag">ODS {{ p.ods|join(",") }}</span>{% endif %}
+      {% if p.type %}<span class="tag">{{ p.type }}</span>{% endif %}
+      {% for t in p.tags %}<span class="tag">#{{ t }}</span>{% endfor %}
+    </p>
+  </article>
+  {% else %}
+  <p class="muted">Nenhum projeto ainda.</p>
+  {% endfor %}
+</div>
+{% endblock %}

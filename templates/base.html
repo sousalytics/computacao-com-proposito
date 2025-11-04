@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title or "Computação com Propósito — Mostra" }}</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1><a href="./">Computação com Propósito — Mostra</a></h1>
+      <nav aria-label="Seções">
+        <a href="./">Projetos</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">Repositório</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <div class="wrap">
+      <small>Página gerada com Python (Jinja2). Sem JavaScript no cliente.</small>
+    </div>
+  </footer>
+</body>
+</html>

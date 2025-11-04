@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="proj">
+  <h2>{{ meta.title }}</h2>
+  <p class="muted">Grupo: {{ meta.id }} • Tema: {{ meta.topic }} • ODS: {{ meta.ods|join(",") if meta.ods else "—" }} • Data: {{ meta.date or "—" }}</p>
+  <p class="muted">Tipo: {{ meta.type }}{% if meta.demo_url %} • <a href="{{ meta.demo_url }}" target="_blank" rel="noopener">Demo</a>{% endif %}{% if meta.repo_url %} • <a href="{{ meta.repo_url }}" target="_blank" rel="noopener">Repositório</a>{% endif %}</p>
+
+  <section>
+    <h3>Resumo</h3>
+    <div class="md">{{ summary_html | safe }}</div>
+  </section>
+
+  {% if meta.team %}
+  <section>
+    <h3>Equipe</h3>
+    <ul class="cols">
+      {% for m in meta.team %}<li><span class="chip">{{ m }}</span></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if meta.ods %}
+  <section>
+    <h3>ODS relacionadas</h3>
+    <p>{% for o in meta.ods %}<span class="tag">ODS {{ o }}</span>{% endfor %}</p>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}
